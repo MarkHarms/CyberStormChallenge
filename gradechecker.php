@@ -5,7 +5,7 @@
 		header("Location: userlogin.php");
 		}
 		
- $db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446')
+ $db = mysqli_connect()
  or die('Error connecting to MySQL server.');
 ?>
 
