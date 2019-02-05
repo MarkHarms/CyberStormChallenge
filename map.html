@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>OpenLayers - User input to create marker</title>
+<style>
+#mapdiv {
+    width:800px;
+    height:600px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
+<script type="text/javascript">
+     var map, basemap, markers;
+    $(document).ready(function () {
+        init_map();
+        
+        $("#btn_addmarker").on("click", function () {
+            var partsOfStr = $("#latitude1").val().split(',');
+            console.log(partsOfStr);
+           /* var lon1 = $("#latitude1").val();
+            var lat1 = $("#longitude1").val();
+            var lon2 = $("#latitude2").val();
+            var lat2 = $("#longitude2").val();*/
+            add_marker(partsOfStr[1],partsOfStr[0], partsOfStr[3], partsOfStr[2]);
+        });
+    });
+
+    function init_map() {
+        map = new OpenLayers.Map("mapdiv",{numZoomLevels: 10,
+    projection: new OpenLayers.Projection("EPSG:900913"),
+    displayProjection: new OpenLayers.Projection("EPSG: 4326")});
+        var ol = new OpenLayers.Layer.OSM();
+        map.addLayers([ol]);
+        map.setCenter(new OpenLayers.LonLat(-74.01636,40.71012).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                map.getProjectionObject()), 15);
+    }
+
+    function add_marker(latitude1, longitude1,latitude2, longitude2) {
+        var start_point = new OpenLayers.Geometry.Point(latitude1,longitude1);
+        var end_point = new OpenLayers.Geometry.Point(latitude2,longitude2);
+        
+        var vector = new OpenLayers.Layer.Vector();
+        vector.addFeatures([new OpenLayers.Feature.Vector(new OpenLayers.Geometry.LineString([start_point, end_point]).transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")))]);
+        map.addLayers([vector]);
+        map.setCenter(new OpenLayers.LonLat(latitude1,longitude1).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                map.getProjectionObject()), 15);
+        //console.log(latitude + ", " + longitude);
+    }
+</script>
+</head>
+<body>
+<div id="mapdiv"></div>
+<div id="inputForm">
+    <p>Enter Coordinates in the box below. Follow the given example format!</p>
+    <p>In this example, a line is drawn from start of 40.71012, -74.01636 to finish 40.7128, -72.0060</p>
+  Coordinates:<input id="latitude1" size="35" type="text" value="40.71012, -74.01636, 40.7128, -72.0060"/>
+ <!-- Longitude 1:
+  <input id="longitude1" type="text" value="-74.01636"/>
+  Latitude 2:
+  <input id="latitude2" type="text" value="40.7128"/>
+  Longitude 2:
+  <input id="longitude2" type="text" value="-72.0060"/> -->
+  <input id="btn_addmarker" type="button" value="Add Marker" />
+</div>
+</body>
+</html>
+   
