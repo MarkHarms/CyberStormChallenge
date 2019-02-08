@@ -14,6 +14,11 @@
     width:800px;
     height:600px;
 }
+#fileDisplayArea {
+  margin-top: 2em;
+  width: 100%;
+  overflow-x: auto;
+}
 </style>
 <?php
 
@@ -51,7 +56,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      var map, basemap, markers;
     $(document).ready(function () {
         init_map();
-        
+        var fileInput = document.getElementById('fileInput');
+		var fileDisplayArea = document.getElementById('fileDisplayArea');
+		
+		fileInput.addEventListener('change', function(e) {
+			var file = fileInput.files[0];
+			var textType = /text.*/;
+
+			if (file.type.match(textType)) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					var fileOutput = reader.result;
+					var fileSplitOutput = fileOutput.split('\n');
+					var arrayLength = fileSplitOutput.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        var partsOfStr = fileSplitOutput[i].split(',');
+                        console.log(partsOfStr);
+                        add_marker(partsOfStr[1],partsOfStr[0], partsOfStr[3], partsOfStr[2]);
+                    }
+				}
+
+				reader.readAsText(file);	
+			} else {
+				fileDisplayArea.innerText = "File not supported!"
+			}
+		});
+		
         $("#btn_addmarker").on("click", function () {
             var partsOfStr = $("#latitude1").val().split(',');
             console.log(partsOfStr);
@@ -62,11 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             add_marker(partsOfStr[1],partsOfStr[0], partsOfStr[3], partsOfStr[2]);
         });
     });
-
+    
+    
     function init_map() {
         map = new OpenLayers.Map("mapdiv",{numZoomLevels: 10,
-    projection: new OpenLayers.Projection("EPSG:900913"),
-    displayProjection: new OpenLayers.Projection("EPSG: 4326")});
+        projection: new OpenLayers.Projection("EPSG:900913"),
+        displayProjection: new OpenLayers.Projection("EPSG: 4326")});
         var ol = new OpenLayers.Layer.OSM();
         map.addLayers([ol]);
         map.setCenter(new OpenLayers.LonLat(-74.01636,40.71012).transform(
@@ -91,21 +123,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label id="pageTitle">Challenge Number 2</label>
             <button onclick="location.href='gradechecker.php';" id="gradesBtn">See Grades</button>
         </div>
-        <div>
-    		<div id="mapdiv"></div>
+        <div id="mapdiv"></div>
+    	<div style="background-color:white;">
             <div id="inputForm">
                 <p>Enter Coordinates in the box below. Follow the given example format!</p>
                 <p>In this example, a line is drawn from start of 40.71012, -74.01636 to finish 40.7128, -72.0060</p>
               Coordinates:<input id="latitude1" size="35" type="text" value="40.71012, -74.01636, 40.7128, -72.0060"/>
-             <!-- Longitude 1:
-              <input id="longitude1" type="text" value="-74.01636"/>
-              Latitude 2:
-              <input id="latitude2" type="text" value="40.7128"/>
-              Longitude 2:
-              <input id="longitude2" type="text" value="-72.0060"/> -->
               <input id="btn_addmarker" type="button" value="Add Marker" />
             </div>
-        </div>
+       
+        <br/>
+            <div>
+    			Alternatively, upload a Text file of coordinates separated by new lines!  
+    			<input type="file" id="fileInput">
+    		</div>
+    	</div>
+		<pre id="fileDisplayArea"><pre>
         <div>
             <form id="passDiv" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
                <label id="passwordLbl">Password: </label>
@@ -114,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               
             </form>
             <div>
-                <label id="wrongPass">*Incorrect Password</label>
+                <label id="wrongPass" hidden>*Incorrect Password</label>
             </div>
         </div>
             
