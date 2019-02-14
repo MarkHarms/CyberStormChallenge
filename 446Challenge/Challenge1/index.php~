@@ -22,32 +22,75 @@
 </style>
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 	echo "Test";
 	session_start();
  	echo $_SESSION['username'];
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['username']))
+	{
 		header("Location: userlogin.php");
-		
 	}
 	
-	$db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446')
-	 or die('Error connecting to MySQL server.');
-	 echo "Test";
-	$login = mysqli_query($db,"select * from challengeTable where (Challenge= 1) and (Password = '" . $_POST['password'] . "')");
+	$db = mysqli_connect('localhost','hsbuser','hsbpasswordisareallygoodpassword','hsbcyberstorm') or die('Error connecting to MySQL server.');
+	echo "Test";
+	 
+	$query = $db->prepare
+	(
+	   "SELECT t.team_name,
+			p.password
+		FROM `hsbcyberstorm`.`challenge_passwords` p
+			JOIN `hsbcyberstorm`.`teams` t ON (p.team_id=t.team_id)
+		WHERE t.team_name=?
+			AND p.challenge_id=1
+			AND p.password=?"
+	);
+	// b = blob, d = double, i = int, s = string
+	$query->bind_param("ss", $_SESSION['username'], $_POST['password']);
+	$query->execute();
+	$query->store_result();
+	$rowcount = $query->num_rows;
+	$query->close();
+	 
+	echo $rowcount;
+	
+	if ($rowcount == 1) 
+	{
+		$newQuery = #db->prepare
+		(
+			"UPDATE `hsbcyberstorm`.`teams` 
+			 SET `team_grade`='C' 
+			 WHERE `team_name`=?;"
+		);
+		$newQuery->bind_param('s', $_SESSION['username']);
+		$newQuery->execute();
+		$numAffected = $newQuery->affected_rows;
+		$newQuery->close();
+		
+		if ($numAffected == 1)
+			header("Location: ../Challenge2/");
+		else
+			echo "Update of grade failed! Team Name:{$_SESSION['username']} Num Affected:$numAffected";	
+	}
+	else
+	{
+		header("Location: index.php");
+	}
+	 
+	/*$login = mysqli_query($db,"select * from challengeTable where (Challenge= 1) and (Password = '" . $_POST['password'] . "')");
 	$rowcount = mysqli_num_rows($login);
 	echo $rowcount;
 	if ($rowcount == 1) {
 	mysqli_query($db,"Update userloginTable Set Grade = 'C' Where Username = '".$_SESSION['username']."'");
-	header("Location: Challenge3.php");
+	header("Location: ../Challenge2/");
 	}
 	else
 	{
-	header("Location: Challenge2.php");
-	}
+	header("Location: index.php");
+	}*/
 }	
 ?>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -123,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label id="pageTitle">Challenge Number 2</label>
             <button onclick="location.href='gradechecker.php';" id="gradesBtn">See Grades</button>
         </div>
-        <div id="mapdiv"></div>
+        <div id="mapdiv" style="margin:auto !important;"></div>
     	<div style="background-color:white;">
             <div id="inputForm">
                 <p>Enter Coordinates in the box below. Follow the given example format!</p>

@@ -74,7 +74,7 @@ function checkPassword() {
     console.log(pass);
 
     if (pass == "password") {
-        console.log("Next Page");
+        document.location.href = "../LoginPage/";
     } else {
         document.getElementById("incorrectPassword").style.visibility = "visible";
         document.getElementById("passBox").value = "";
