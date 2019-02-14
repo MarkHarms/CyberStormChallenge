@@ -1,3 +1,7 @@
+<?php
+	include "../StatusCheck.php";
+?>
+
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -8,20 +12,12 @@
 <body> 
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	echo "Test";
-	session_start();
-	
-	$db = mysqli_connect('localhost','hsbuser','hsbpasswordisareallygoodpassword','hsbcyberstorm') or die('Error connecting to MySQL server.');
-	echo "Test";
-	 
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name
-		FROM `hsbcyberstorm`.`teams` t
+		FROM `teams` t
 		WHERE t.team_name=?"
 	);
 	// b = blob, d = double, i = int, s = string
@@ -39,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		$newQuery = $db->prepare
 		(
-			"UPDATE `hsbcyberstorm`.`teams` 
+			"UPDATE `teams` 
 			 SET `team_grade`='D' 
 			 WHERE `team_name`=?;"
 		);
@@ -55,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	else
 	{
-		//header("Location: index.php");
+		echo "Invalid Username!";
 	}
 }	
 ?>
@@ -63,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <h2>Login Challenge</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 
-  Username: <input type="text" name="username" value="<?php echo $username;?>">
+  Username: <input type="text" name="username" value="">
   
   <input type="submit" name="submit" value="Submit">  
 </form>

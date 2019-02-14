@@ -1,3 +1,7 @@
+<?php
+	include("../StatusCheck.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <header>
@@ -24,26 +28,12 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	echo "Test";
-	session_start();
- 	echo $_SESSION['username'];
-	if(!isset($_SESSION['username']))
-	{
-		header("Location: userlogin.php");
-	}
-	
-	$db = mysqli_connect('localhost','hsbuser','hsbpasswordisareallygoodpassword','hsbcyberstorm') or die('Error connecting to MySQL server.');
-	echo "Test";
-	 
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name,
 			p.password
-		FROM `hsbcyberstorm`.`challenge_passwords` p
-			JOIN `hsbcyberstorm`.`teams` t ON (p.team_id=t.team_id)
+		FROM `challenge_passwords` p
+			JOIN `teams` t ON (p.team_id=t.team_id)
 		WHERE t.team_name=?
 			AND p.challenge_id=1
 			AND p.password=?"
@@ -54,14 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$query->store_result();
 	$rowcount = $query->num_rows;
 	$query->close();
-	 
-	echo $rowcount;
 	
 	if ($rowcount == 1) 
 	{
 		$newQuery = $db->prepare
 		(
-			"UPDATE `hsbcyberstorm`.`teams` 
+			"UPDATE `teams` 
 			 SET `team_grade`='C' 
 			 WHERE `team_name`=?;"
 		);
@@ -77,20 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else
 	{
-		header("Location: index.php");
+		echo "Incorrect Password!";
 	}
-	 
-	/*$login = mysqli_query($db,"select * from challengeTable where (Challenge= 1) and (Password = '" . $_POST['password'] . "')");
-	$rowcount = mysqli_num_rows($login);
-	echo $rowcount;
-	if ($rowcount == 1) {
-	mysqli_query($db,"Update userloginTable Set Grade = 'C' Where Username = '".$_SESSION['username']."'");
-	header("Location: ../Challenge2/");
-	}
-	else
-	{
-	header("Location: index.php");
-	}*/
 }	
 ?>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -185,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <div>
             <form id="passDiv" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
                <label id="passwordLbl">Password: </label>
-                <input type="text" name="password" value="<?php echo $password;?>">
+                <input type="text" name="password" value="">
                 <input type="submit" name="submit" value="Submit">  
               
             </form>
