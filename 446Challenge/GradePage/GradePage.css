@@ -1,0 +1,64 @@
+.center {
+    text-align: center;
+    float: none;
+}
+
+#gradeTable {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+
+    border: 3px solid black;
+    border-radius: 25px; 
+    border-spacing: 0;
+
+}
+
+.gradeColumn {
+    width: 100px;
+}
+
+th {
+    background-color: #E31B23;
+}
+
+#pageTitle {
+    color: black;
+    font-family: Impact;
+    font-size: 75px;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+}
+
+td {
+    background-color: white;
+}
+
+tr {
+    height: 50px;
+}
+
+html {
+    background-image: linear-gradient(45deg, rgba(1, 47, 139, 0.993), rgb(75, 158, 253));
+    width: 100%;
+    height: 100%;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 22px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 22px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 22px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 22px;
+}

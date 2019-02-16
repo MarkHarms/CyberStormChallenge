@@ -1,3 +1,8 @@
 [12-Feb-2019 17:35:57 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge2/index.php on line 57
 [12-Feb-2019 17:36:59 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge2/index.php on line 57
 [12-Feb-2019 17:37:03 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge2/index.php on line 57
+[16-Feb-2019 17:57:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php:15
+Stack trace:
+#0 /home/k4uklehyrp7g/public_html/446Challenge/Challenge2/index.php(2): include()
+#1 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php on line 15

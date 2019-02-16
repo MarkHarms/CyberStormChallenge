@@ -1,6 +1,3 @@
-<?php
-	include "../StatusCheck.php";
-?>
 
 <!DOCTYPE HTML>  
 <html>
@@ -14,6 +11,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    $db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446') or die('Error connecting to MySQL server.');
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name
@@ -31,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	
 	if ($rowcount == 1) 
 	{
+	    session_start();
 		$_SESSION['username'] = $_POST['username'];
 		
 		$newQuery = $db->prepare

@@ -1,0 +1,5 @@
+[16-Feb-2019 18:00:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php:15
+Stack trace:
+#0 /home/k4uklehyrp7g/public_html/446Challenge/Challenge3/index.php(2): require()
+#1 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php on line 15

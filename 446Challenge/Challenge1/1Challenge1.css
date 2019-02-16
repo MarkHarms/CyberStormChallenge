@@ -1,0 +1,64 @@
+html {
+    background-image: linear-gradient(45deg, rgba(1, 47, 139, 0.993), rgb(75, 158, 253));
+    width: 100%;
+    height: 100%;
+}
+
+#passDiv {
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+}
+
+#passwordLbl {
+    font-size: 25px;
+    margin-left: 75%;
+}
+
+#passBox {
+    width: 25%;
+    height: 23px;
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+#sbmtBtn {
+    height: 30px;
+    width: 60px;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+#titleDiv {
+    text-align: center;
+    height: 80px;
+}
+
+#pageTitle {
+    font-size: 35px;
+    margin-top: 10px;
+    position: absolute;
+    left: 40%;
+}
+
+#gradesBtn {
+    height: 50px;
+    width: 80px;
+    border-radius: 5px;
+    font-size: 15px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#wrongPass {
+    color: red;
+    font-size: 20px;
+    left: 50%;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 110px;
+
+}

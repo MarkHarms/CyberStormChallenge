@@ -14,3 +14,28 @@
 [12-Feb-2019 17:35:50 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 145
 [12-Feb-2019 17:35:57 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 145
 [12-Feb-2019 17:41:20 UTC] PHP Notice:  Undefined variable: password in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 145
+[16-Feb-2019 17:37:31 UTC] PHP Notice:  Undefined variable: db in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 28
+[16-Feb-2019 17:37:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 28
+[16-Feb-2019 17:50:08 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 30
+[16-Feb-2019 17:50:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php:15
+Stack trace:
+#0 /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php(2): require()
+#1 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php on line 15
+[16-Feb-2019 17:50:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php:15
+Stack trace:
+#0 /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php(2): require()
+#1 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php on line 15
+[16-Feb-2019 17:50:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php:15
+Stack trace:
+#0 /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php(2): require()
+#1 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/StatusCheck.php on line 15
+[16-Feb-2019 17:55:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function bind_param() on boolean in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php:41
+Stack trace:
+#0 {main}
+  thrown in /home/k4uklehyrp7g/public_html/446Challenge/Challenge1/index.php on line 41

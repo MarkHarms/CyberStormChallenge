@@ -1,33 +1,29 @@
 <?php
-	include("../StatusCheck.php");
+	//include("../StatusCheck.php");
 ?>
-
 <!DOCTYPE html>
-<html>
-    <header>
+     <header>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<title>OpenLayers - User input to create marker</title>
+		<title>Challenge 2</title>
         <link rel="stylesheet" type="text/css" href="Challenge2.css">	
     </header>
     <body>
         
-	<style>
-#mapdiv {
-    width:800px;
-    height:600px;
-}
-#fileDisplayArea {
-  margin-top: 2em;
-  width: 100%;
-  overflow-x: auto;
-}
-</style>
-<?php
+        <style>
+            #fileDisplayArea {
+              margin-top: 2em;
+              width: 100%;
+              overflow-x: auto;
+            }
+            </style>
+            <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
+    session_start();
+    $db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446') or die('Error connecting to MySQL server.');
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name,
@@ -69,15 +65,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 }	
 ?>
-		<pre id="fileDisplayArea"><pre>
+        <div id="titleDiv">
+            <label id="pageTitle">Challenge Number 2</label>
+            <button onclick="location.href='../GradePage/';" id="gradesBtn">See Grades</button>
+        </div>
         <div>
+            <div style="width:75%; margin:auto; text-align:center">
+                <p>Put challenge info here.</p>
+            </div>
+            <div>
+                <pre id="fileDisplayArea"><pre>
+            </div>
+        </div>
+        <div id="passDiv">
             <form id="passDiv" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
                <label id="passwordLbl">Password: </label>
                 <input type="text" name="password" value="">
                 <input type="submit" name="submit" value="Submit">  
-              
             </form>
         </div>
-            
     </body>
-</html>
+<html>
