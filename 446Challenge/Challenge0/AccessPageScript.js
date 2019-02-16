@@ -7,6 +7,36 @@ document.body.style.width = (doc_width - 16).toString() + "px";
 console.log(doc_height);
 console.log(doc_width);
 
+var i = 0;
+var txt = "Oh no! The end of the quarter is near and your grade isn't looking too pretty! You know your parents will be checking your grades when they get off work at 5 and that only leaves you with 2 hours to figure out how to change it! Luckily, we have create a back door to change your grade. The only catch is there are a series of challenges that you must complete to move your it up. Each Challenge you complete will move your grade up one letter from the current F that you have. Good Luck!";
+var speed = 50;
+var whatisthis = "youshallnotpass";
+var music = new Audio('HackStreetBoyz.m4a');
+music.loop = true;
+
+var LeedleLeedleLeedleLee = new Audio('LeedleLee.m4a');
+
+document.addEventListener('DOMContentLoaded', function(){
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block";
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        music.play();
+        typeWriter();
+    }
+    }
+});
+
+//music.play();
+
 document.onmousemove = MousePosition;
 
 function MousePosition(e) {
@@ -35,6 +65,7 @@ function MousePosition(e) {
 
     //Reads checks position of mouse and decides where the button needs to move
     if ((y_pos >= top_pos - 50) && (y_pos <= bottom_pos) && (x_pos >= left_pos) && (x_pos <= right_pos)){
+        LeedleLeedleLeedleLee.play();
         submitBtn.style.top = move_down;
 
         if(submitBtn.offsetTop >= (doc_height - 25)){
@@ -43,6 +74,7 @@ function MousePosition(e) {
         
     }
     else if((y_pos <= bottom_pos + 50) && (y_pos >= top_pos) && (x_pos >= left_pos) && (x_pos <= right_pos)){
+        LeedleLeedleLeedleLee.play();
         submitBtn.style.top = move_up;
 
         if(submitBtn.offsetTop <= 0){
@@ -51,6 +83,7 @@ function MousePosition(e) {
         
     }
     else if((x_pos >= left_pos - 50) && (x_pos <= right_pos) && (y_pos >= top_pos) && (y_pos <= bottom_pos)){
+        LeedleLeedleLeedleLee.play();
         submitBtn.style.left = move_right;
 
         if(submitBtn.offsetLeft >= (doc_width)){
@@ -59,6 +92,7 @@ function MousePosition(e) {
         
     }
     else if((x_pos <= right_pos + 50) && (x_pos >= left_pos) && (y_pos >= top_pos) && (y_pos <= bottom_pos)){
+        LeedleLeedleLeedleLee.play();
         submitBtn.style.left = move_left;
         if(submitBtn.offsetLeft <= 0){
             submitBtn.style.left = (doc_width - 70).toString() + "px";
@@ -68,15 +102,25 @@ function MousePosition(e) {
 
 }
 
-function checkPassword() {
+function ignoreThisFunction() {
     var pass = document.getElementById("passBox").value;
 
     console.log(pass);
 
-    if (pass == "password") {
-        document.location.href = "../LoginPage/";
+    if (pass == whatisthis) {
+        console.log("Next Page");
     } else {
         document.getElementById("incorrectPassword").style.visibility = "visible";
         document.getElementById("passBox").value = "";
     }
 }
+
+function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("explainText").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+}
+
+//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter

@@ -2,6 +2,7 @@
     <header>
         <script src="AccessPageScript.js"></script>
         <link rel="stylesheet" type="text/css" href="AccessPage.css">
+        </embed>
     </header>
     <body>
         <div id="topRow">
@@ -12,10 +13,13 @@
                 <label class="pageTitle">Challenge</label>
             </div>
         </div>
+        <div id="challengeText">
+            <p id="explainText"></p>
+        </div>
         <div id="inputDiv">
             <label id="passwordLbl">Password: </label>
             <input type=password id="passBox"></input>
-            <button id="runBtn"  onClick="checkPassword()" tabindex="-1">Submit</button>
+            <button id="runBtn"  onClick="ignoreThisFunction()" tabindex="-1">Submit</button>
         </div>
         <div id="bottomRow">
             <div>
@@ -23,4 +27,13 @@
             </div>
         </div>
     </body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p>Click anywhere outside the box to get started!</p>
+        </div>
+
+    </div>
 <html>

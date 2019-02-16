@@ -3,10 +3,10 @@
     height: 35px;
     width: 70px;
     left: 65%;
-    top: 46.5%;
+    top: 60%;
     z-index: 1234;
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: white;
 }
 
 #inputDiv {
@@ -15,7 +15,7 @@
 }
 
 #passBox {
-    top: 47%;
+    top: 60%;
     left: 38%;
     width: 25%;
     position: absolute;
@@ -24,7 +24,7 @@
 }
 
 #passwordLbl {
-    top: 47%;
+    top: 60%;
     left: 27%;
     position: absolute;
     font-size: 25px;
@@ -58,7 +58,55 @@
 }
 
 html {
-    background-image: linear-gradient(45deg, rgba(1, 47, 139, 0.993), rgb(75, 158, 253));
+    background-color: #D3D3D3;
     width: 100%;
     height: 100%;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 22222; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    border-radius: 30px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #challengeText {
+      text-align: center;
+      height: 25%;
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+  }
