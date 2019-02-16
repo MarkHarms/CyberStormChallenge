@@ -4,15 +4,12 @@ var doc_height = document.documentElement.clientHeight;
 document.body.style.height = (doc_height - 16).toString() + "px";
 document.body.style.width = (doc_width - 16).toString() + "px";
 
-console.log(doc_height);
-console.log(doc_width);
-
 var i = 0;
 var txt = "Oh no! The end of the quarter is near and your grade isn't looking too pretty! You know your parents will be checking your grades when they get off work at 5 and that only leaves you with 2 hours to figure out how to change it! Luckily, we have create a back door to change your grade. The only catch is there are a series of challenges that you must complete to move your it up. Each Challenge you complete will move your grade up one letter from the current F that you have. Good Luck!";
-var speed = 50;
+var speed = 30;
 var whatisthis = "youshallnotpass";
-var music = new Audio('HackStreetBoyz.m4a');
-music.loop = true;
+var HACKSTREETBOYZAREBACK = new Audio('HackStreetBoyz.m4a');
+HACKSTREETBOYZAREBACK.loop = true;
 
 var LeedleLeedleLeedleLee = new Audio('LeedleLee.m4a');
 
@@ -29,15 +26,25 @@ document.addEventListener('DOMContentLoaded', function(){
     window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        music.play();
+        HACKSTREETBOYZAREBACK.play();
         typeWriter();
     }
     }
 });
 
-//music.play();
+createCow();
 
 document.onmousemove = MousePosition;
+
+function showPassword() {
+    console.log(`
+      ___________.__             __________                                               .___ .__            
+        \__    ___/|  |__   ____   \______   \_____    ______ ________  _  _____________  __| _/ |__| ______ /\ 
+          |    |   |  |  \_/ __ \   |     ___/\__  \  /  ___//  ___/\ \/ \/ /  _ \_  __ \/ __ |  |  |/  ___/ \/ 
+          |    |   |   Y  \  ___/   |    |     / __ \_\___ \ \___ \  \     (  <_> )  | \/ /_/ |  |  |\___ \  /\ 
+          |____|   |___|  /\___  >  |____|    (____  /____  >____  >  \/\_/ \____/|__|  \____ |  |__/____  > \/ 
+                        \/     \/                  \/     \/     \/                          \/          \/    `);
+}
 
 function MousePosition(e) {
 
@@ -102,6 +109,27 @@ function MousePosition(e) {
 
 }
 
+function tooEasy() {
+    console.log(`
+    __________                                               .___
+    \______   \_____    ______ ________  _  _____________  __| _/
+     |     ___/\__  \  /  ___//  ___/\ \/ \/ /  _ \_  __ \/ __ | 
+     |    |     / __ \_\___ \ \___ \  \     (  <_> )  | \/ /_/ | 
+     |____|    (____  /____  >____  >  \/\_/ \____/|__|  \____ | 
+                    \/     \/     \/                          \/ `);
+}
+
+function createCow() {
+    console.log(`%c ________________________________________
+    < mooooooooooooooooooooooooooooooooooooo >
+     ----------------------------------------
+            \\   ^__^
+             \\  (oo)\\_______
+                (__)\\       )\\/\\
+                    ||----w |
+                    ||     ||`, "font-family:monospace");
+}
+
 function ignoreThisFunction() {
     var pass = document.getElementById("passBox").value;
 
@@ -112,6 +140,7 @@ function ignoreThisFunction() {
     } else {
         document.getElementById("incorrectPassword").style.visibility = "visible";
         document.getElementById("passBox").value = "";
+        console.log("Come on you really think that's the password?");
     }
 }
 
@@ -123,4 +152,3 @@ function typeWriter() {
     }
 }
 
-//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_typewriter
