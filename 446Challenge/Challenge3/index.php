@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             </br></br>
             <div style="width:75%; margin:auto; text-align:center">
                 <p>Be careful, the password will be changed every 5 minutes, so its best to write a program instead of doing it by hand.</p>
-                <!--<p><a target="_blank" href="client"</p>-->
+                <p><a target="_blank" href="client-student.py">Download the template!</a></p>
             </div>
 
         </div>
