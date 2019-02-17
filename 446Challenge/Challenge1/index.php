@@ -144,6 +144,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         <div>
             <div style="width:75%; margin:auto; text-align:center">
                 <p >Your teacher is investigating the path of alien space ships spotted off the coast of New York, marking the coordinates for the beginning and end of each of their flights. He has created a map to help him draw out the paths, but needs help deciphering the message. He is currently broadcasting them through packets on this network. Unfortunately, government agencies are actively broadcasting fake coordinates to throw you off track and keep alien activity a secret, so it might be beneficial to sniff for this Veginere cyphered source destination: zsh qhxc tvuu chvKabxihj ohu wkb tvuu nyir zki yxtrlvg key: <a target="_blank" href="fruit.jpg"> The name of this fruit.</a> Perhaps a reverse image search would be helpful if you arent a fruit connoisseur. Be prepared, you might be standing on your head before the final password for this challenge becomes clear.</p>
+                <p><a target="_blank" href="sniff.py">Download the Sniffing file here! </a>You need to install Python-Scapy library</p>            
+                <p>For this program, you will want to isolate payloads for output. Also, example syntax for filter is "src 192.0.0.1 or src 192.168.1.1"</p>
+                <p>If the input does not function as expected, make sure to remove "." from the end of coordinates</p>
             </div>
             <div id="mapdiv" style="margin:auto !important;"></div>
             </br></br>
