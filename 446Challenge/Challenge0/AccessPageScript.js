@@ -5,7 +5,7 @@ document.body.style.height = (doc_height - 16).toString() + "px";
 document.body.style.width = (doc_width - 16).toString() + "px";
 
 var i = 0;
-var txt = "Oh no! The end of the quarter is near and your grade isn't looking too pretty! You know your parents will be checking your grades when they get off work at 5 and that only leaves you with 2 hours to figure out how to change it! Luckily, we have created a back door that will allow you to change your grade. The only catch is there are a series of challenges that you must complete. Each Challenge you complete will move your grade up one letter from the current F that you have. Good Luck!";
+var txt = "Oh no! The end of the quarter is near and your grade isn't looking too pretty! You know your parents will be checking your grades when they get off work at 5 and that only leaves you with 2 hours to figure out how to change it! Luckily, we have created a backdoor to change your grade. The only catch is there are a series of challenges that you must complete to move it up. Each Challenge you complete will move your grade up one letter from the current F that you have. Good Luck!";
 var speed = 30;
 var whatisthis = "youshallnotpass";
 var HACKSTREETBOYZAREBACK = new Audio('HackStreetBoyz.m4a');
