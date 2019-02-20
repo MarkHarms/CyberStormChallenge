@@ -1,5 +1,8 @@
 <?php
 
+	$redirect = true;
+	#$redirect = false;
+
 	session_start();
 
 	if (!isset($_SESSION['username']))
@@ -25,26 +28,28 @@
 
 	$loc = htmlentities($_SERVER["PHP_SELF"]);
 
-	switch($grade)
+	if ($redirect)
 	{
-		case 'D':
-			if (!stristr($loc, "Challenge1"))
-				header("Location: $dir/446Challenge/Challenge1");
-			break;
-		case 'C':
-			if (!stristr($loc, "Challenge2"))
-				header("Location: $dir/446Challenge/Challenge2");
-			break;
-		case 'B':
-			if (!stristr($loc, "Challenge3"))
-				header("Location: $dir/446Challenge/Challenge3");
-			break;
-		case 'A':
-			if (!stristr($loc, "GradePage"))
-				header("Location: $dir/446Challenge/GradePage");
-			break;
-		default:
-			header("Location: $dir/446Challenge/LoginPage");
+		switch($grade)
+		{
+			case 'D':
+				if (!stristr($loc, "Challenge1"))
+					header("Location: $dir/446Challenge/Challenge1");
+				break;
+			case 'C':
+				if (!stristr($loc, "Challenge2"))
+					header("Location: $dir/446Challenge/Challenge2");
+				break;
+			case 'B':
+				if (!stristr($loc, "Challenge3"))
+					header("Location: $dir/446Challenge/Challenge3");
+				break;
+			case 'A':
+				if (!stristr($loc, "GradePage"))
+					header("Location: $dir/446Challenge/GradePage");
+				break;
+			default:
+				header("Location: $dir/446Challenge/Challenge0");
+		}
 	}
-
 ?>

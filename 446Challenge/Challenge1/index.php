@@ -1,5 +1,5 @@
 <?php
-//	require "../StatusCheck.php";
+	require "../StatusCheck.php";
 ?>
 <!DOCTYPE html>
     <header>
@@ -25,8 +25,9 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    session_start();
-    $db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446') or die('Error connecting to MySQL server.');
+    #session_start();
+    #$db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446') or die('Error connecting to MySQL server.');
+	
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name,

@@ -11,7 +11,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    $db = mysqli_connect('23.229.173.35','jsl039','Password','projectCSC446') or die('Error connecting to MySQL server.');
+    $db = mysqli_connect('localhost','hsbuser','hsbpasswordisareallygoodpassword','hsbcyberstorm') or die('Error connecting to MySQL server.');
 	$query = $db->prepare
 	(
 	   "SELECT t.team_name
